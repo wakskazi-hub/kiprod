@@ -4,10 +4,976 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KIPROD Risk Management Services Ltd</title>
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+:root {
+  --navy: #0b1f4d;
+  --gold: #f5a623;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --white: #ffffff;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--slate-50);
+  color: var(--slate-800);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.container {
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+}
+
+.container-narrow {
+  width: min(100% - 48px, 1024px);
+  margin: 0 auto;
+}
+
+.container-wide {
+  width: min(100% - 48px, 1152px);
+  margin: 0 auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--slate-200);
+  background: var(--white);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+}
+
+.brand-title {
+  margin: 0;
+  color: var(--slate-900);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.brand-subtitle {
+  margin: 2px 0 0;
+  color: var(--slate-500);
+  font-size: 14px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  color: var(--slate-700);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav a:hover {
+  color: var(--gold);
+}
+
+.hero,
+.institute-hero {
+  background: linear-gradient(90deg, #172554, var(--gold));
+  color: var(--white);
+}
+
+.hero {
+  padding: 96px 0;
+}
+
+.hero h1 {
+  max-width: 920px;
+  margin: 0;
+  font-size: clamp(44px, 7vw, 72px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 32px 0 0;
+  color: #e2e8f0;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.section-white {
+  background: var(--white);
+}
+
+.section-soft {
+  background: var(--slate-50);
+}
+
+.section-dark {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.grid {
+  display: grid;
+  gap: 32px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card {
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 18px 45px rgb(15 23 42 / 0.1);
+}
+
+.card-soft {
+  background: var(--slate-50);
+}
+
+.card-white {
+  background: var(--white);
+}
+
+.card-dark {
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: 0 22px 55px rgb(15 23 42 / 0.25);
+}
+
+.card h2,
+.card h3 {
+  margin: 0;
+}
+
+.card h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.card h3 {
+  font-size: 24px;
+  color: var(--slate-900);
+}
+
+.card p,
+.text-muted {
+  color: var(--slate-600);
+  line-height: 1.75;
+}
+
+.card-dark p,
+.card-dark .text-muted {
+  color: var(--slate-300);
+}
+
+.blue-heading {
+  color: var(--navy);
+}
+
+.gold-heading {
+  color: var(--gold);
+}
+
+.list {
+  margin: 32px 0 0;
+  padding: 0;
+  color: var(--slate-700);
+  line-height: 1.8;
+  list-style: none;
+}
+
+.list li + li {
+  margin-top: 10px;
+}
+
+.card-dark .list,
+.dark-list {
+  color: #e2e8f0;
+}
+
+.section-heading {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #1d4ed8;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  margin: 16px 0 0;
+  color: var(--slate-900);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.risk-grid {
+  margin-top: 64px;
+}
+
+.risk-card {
+  display: block;
+  border: 1px solid var(--slate-200);
+  border-radius: 24px;
+  background: var(--slate-50);
+  padding: 32px;
+  box-shadow: 0 16px 40px rgb(15 23 42 / 0.1);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.risk-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgb(15 23 42 / 0.18);
+}
+
+.number-badge {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(90deg, var(--navy), var(--gold));
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.risk-card h3 {
+  margin: 24px 0 0;
+  color: var(--slate-900);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.risk-card p {
+  margin: 16px 0 0;
+  color: var(--slate-600);
+  line-height: 1.7;
+}
+
+.explore {
+  margin-top: 24px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.engagement-grid {
+  margin-top: 64px;
+}
+
+.engagement-card {
+  min-height: 190px;
+  border: 1px solid var(--slate-200);
+  border-radius: 24px;
+  background: var(--slate-50);
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgb(15 23 42 / 0.1);
+}
+
+.small-badge {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.engagement-card h3 {
+  margin: 24px 0 0;
+  color: var(--navy);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.cta-grid {
+  align-items: stretch;
+}
+
+.cta-note {
+  margin-top: 32px;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.1);
+  padding: 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  margin-top: 32px;
+  border-radius: 16px;
+  padding: 14px 32px;
+  font-weight: 800;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.btn-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.subpage {
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.subpage-light {
+  background: var(--slate-100);
+}
+
+.subpage-dark {
+  background: var(--slate-900);
+  color: var(--white);
+}
+
+.subpage-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.back-link {
+  display: inline-block;
+  color: #1d4ed8;
+  font-weight: 800;
+}
+
+.subpage-dark .back-link,
+.subpage-navy .back-link {
+  color: var(--gold);
+}
+
+.panel {
+  margin-top: 40px;
+  border-radius: 24px;
+  background: var(--white);
+  padding: 48px;
+  box-shadow: 0 24px 60px rgb(15 23 42 / 0.14);
+}
+
+.panel h1 {
+  margin: 0;
+  color: var(--slate-900);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.panel > p {
+  max-width: 760px;
+  margin: 24px 0 0;
+  color: var(--slate-600);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.panel-dark {
+  background: rgb(255 255 255 / 0.08);
+  color: var(--white);
+  box-shadow: none;
+}
+
+.panel-dark h1 {
+  color: var(--white);
+}
+
+.panel-dark > p {
+  color: #e2e8f0;
+}
+
+.simple-card {
+  border-radius: 16px;
+  background: var(--slate-50);
+  padding: 32px;
+}
+
+.simple-card.bordered {
+  border: 1px solid var(--slate-200);
+}
+
+.simple-card h3 {
+  margin: 0;
+  color: var(--slate-900);
+  font-size: 24px;
+}
+
+.simple-card p {
+  margin: 16px 0 0;
+  color: var(--slate-600);
+  line-height: 1.7;
+}
+
+.academy-card,
+.contact-card {
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.08);
+  padding: 24px;
+}
+
+.academy-card h3,
+.contact-card h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: 20px;
+}
+
+.academy-card p,
+.contact-card p,
+.contact-card li {
+  color: var(--slate-300);
+}
+
+.academy-outcomes {
+  margin-top: 56px;
+  border-radius: 24px;
+  background: rgb(6 182 212 / 0.1);
+  padding: 32px;
+}
+
+.academy-outcomes h3,
+.contact-card h3 {
+  color: var(--gold);
+}
+
+.outcome {
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.08);
+  padding: 24px;
+  text-align: center;
+}
+
+.institute-panel {
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--white);
+  box-shadow: 0 24px 60px rgb(15 23 42 / 0.18);
+}
+
+.institute-hero {
+  padding: 56px;
+}
+
+.institute-hero h1 {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.institute-hero p {
+  margin: 24px 0 0;
+  color: #e2e8f0;
+  font-size: 18px;
+}
+
+.institute-body {
+  padding: 48px;
+}
+
+.mt-large {
+  margin-top: 48px;
+}
+
+@media (max-width: 980px) {
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .grid-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .container-narrow,
+  .container-wide {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .nav {
+    gap: 14px;
+  }
+
+  .hero,
+  .section {
+    padding: 64px 0;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .grid-5 {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .panel,
+  .institute-body,
+  .institute-hero {
+    padding: 28px;
+  }
+
+  .subpage {
+    padding: 24px 0;
+  }
+}
+
+    </style>
   </head>
   <body>
     <main id="app"></main>
-    <script src="script.js"></script>
+    <script>
+const programmes = [
+  "Strategic Client Relationship Management",
+  "Loan Documentation and Securities",
+  "Credit Risk Assessment and Decisioning",
+  "Portfolio Monitoring and Early Warning Systems",
+  "Collections Strategy & Early Recoveries",
+  "Debt Recovery and Legal Enforcement",
+];
+
+const engagementModel = [
+  "Capability Development (LMS)",
+  "Credit Risk Governance Review",
+  "Portfolio Insight",
+  "System Strengthening",
+  "Ongoing Support",
+];
+
+const riskModel = [
+  {
+    title: "Risk Identification",
+    text: "Early identification of portfolio weaknesses and emerging borrower stress.",
+    page: "about",
+  },
+  {
+    title: "Risk Assessment",
+    text: "Structured analysis of repayment ability and sector exposure.",
+    page: "partnerships",
+  },
+  {
+    title: "Risk Monitoring",
+    text: "Continuous portfolio tracking using early warning indicators.",
+    page: "academy",
+  },
+  {
+    title: "Recovery & Resolution",
+    text: "Collections, restructuring, and recovery optimization.",
+    page: "contact",
+  },
+];
+
+const partnershipItems = [
+  {
+    title: "Governance Review",
+    text: "Assessment of policy alignment, reporting structures, and risk controls.",
+  },
+  {
+    title: "Portfolio Monitoring",
+    text: "Implementation of structured monitoring and early warning systems.",
+  },
+  {
+    title: "Recovery Optimization",
+    text: "Improving collections efficiency and borrower engagement frameworks.",
+  },
+];
+
+const instituteItems = [
+  {
+    title: "Research & Publications",
+    text: "Industry insight papers and portfolio risk analysis.",
+  },
+  {
+    title: "Executive Forums",
+    text: "Leadership discussions on governance and institutional resilience.",
+  },
+  {
+    title: "Risk Intelligence",
+    text: "Emerging trends shaping credit risk and recovery environments.",
+  },
+];
+
+const app = document.querySelector("#app");
+
+function bulletList(items, className = "list") {
+  return `<ul class="${className}">${items.map((item) => `<li>&bull; ${item}</li>`).join("")}</ul>`;
+}
+
+function simpleCards(items, extraClass = "") {
+  return items
+    .map(
+      (item) => `
+        <div class="simple-card ${extraClass}">
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </div>
+      `,
+    )
+    .join("");
+}
+
+function renderAbout() {
+  app.innerHTML = `
+    <div class="subpage subpage-light">
+      <div class="container-wide">
+        <a href="#home" class="back-link">&larr; Back Home</a>
+        <section class="panel">
+          <h1>About KIPROD</h1>
+          <p>
+            KIPROD strengthens institutional credit risk management through practical frameworks,
+            operational advisory, recovery strategy, and capability development.
+          </p>
+          <div class="grid grid-3 mt-large">
+            <div class="simple-card">
+              <h3>Vision</h3>
+              <p>To become a leading institution in strengthening credit risk systems across Africa.</p>
+            </div>
+            <div class="simple-card">
+              <h3>Mission</h3>
+              <p>Supporting financial institutions through practical risk management frameworks and execution support.</p>
+            </div>
+            <div class="simple-card">
+              <h3>Core Focus</h3>
+              ${bulletList(["Portfolio Monitoring", "Recovery Systems", "Credit Governance", "Institutional Training"])}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function renderAcademy() {
+  app.innerHTML = `
+    <div class="subpage subpage-navy">
+      <div class="container-wide">
+        <a href="#home" class="back-link">&larr; Back Home</a>
+        <section class="panel panel-dark">
+          <h1>Risk Management Academy</h1>
+          <p>
+            The KIPROD Academy provides practical learning programmes focused on strengthening
+            institutional credit risk capability.
+          </p>
+          <div class="grid grid-2 mt-large">
+            ${programmes
+              .map(
+                (programme) => `
+                  <div class="academy-card">
+                    <h3>${programme}</h3>
+                    <p>Practical industry-focused learning designed for financial institutions.</p>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+          <div class="academy-outcomes">
+            <h3>Academy Outcomes</h3>
+            <div class="grid grid-3 mt-large">
+              ${["Improved Credit Decisions", "Enhanced Monitoring", "Recovery Optimization"]
+                .map((item) => `<div class="outcome">${item}</div>`)
+                .join("")}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function renderPartnerships() {
+  app.innerHTML = `
+    <div class="subpage subpage-light">
+      <div class="container-wide">
+        <a href="#home" class="back-link">&larr; Back Home</a>
+        <section class="panel">
+          <h1>Institutional Partnerships</h1>
+          <p>
+            KIPROD works closely with banks, SACCOs, MFIs, and digital lenders to strengthen
+            operational risk execution.
+          </p>
+          <div class="grid grid-3 mt-large">
+            ${simpleCards(partnershipItems, "bordered")}
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function renderInstitute() {
+  app.innerHTML = `
+    <div class="subpage subpage-light">
+      <div class="container-wide">
+        <a href="#home" class="back-link">&larr; Back Home</a>
+        <section class="institute-panel">
+          <div class="institute-hero">
+            <h1>KIPROD Credit Risk Institute</h1>
+            <p>Research, executive forums, and strategic credit risk insight.</p>
+          </div>
+          <div class="institute-body">
+            <div class="grid grid-3">
+              ${simpleCards(instituteItems)}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function renderContact() {
+  app.innerHTML = `
+    <div class="subpage subpage-dark">
+      <div class="container-narrow">
+        <a href="#home" class="back-link">&larr; Back Home</a>
+        <section class="panel panel-dark">
+          <h1>Contact KIPROD</h1>
+          <p>
+            Reach out for institutional partnerships, risk advisory, academy programmes,
+            and executive engagement.
+          </p>
+          <div class="grid grid-2 mt-large">
+            <div class="contact-card">
+              <h3>Contact Information</h3>
+              <div class="list dark-list">
+                <p>Email: info@kiprod.com</p>
+                <p>Phone: +254 XXX XXX XXX</p>
+                <p>Nairobi, Kenya</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <h3>Services</h3>
+              ${bulletList(["Credit Risk Advisory", "Recovery Strategy", "Institutional Training", "Governance Strengthening"], "list dark-list")}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function renderHome() {
+  app.innerHTML = `
+    <div class="page">
+      <header class="header">
+        <div class="container header-inner">
+          <a href="#home" aria-label="KIPROD home">
+            <h1 class="brand-title">KIPROD</h1>
+            <p class="brand-subtitle">Risk Management Services Ltd</p>
+          </a>
+          <nav class="nav" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#academy">Academy</a>
+            <a href="#institute">Institute</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="container">
+          <h1>Strengthening Credit Risk Management</h1>
+          <p>From capability development to system strengthening and institutional partnerships.</p>
+        </div>
+      </section>
+
+      <section class="section section-white">
+        <div class="container">
+          <div class="grid grid-2">
+            <div class="card card-soft">
+              <h2 class="blue-heading">The Challenge</h2>
+              <p>Most financial institutions have strong credit policies. Yet portfolio challenges still arise.</p>
+              ${bulletList([
+                "Weak early risk detection",
+                "Inconsistent portfolio monitoring",
+                "Unstructured borrower engagement",
+                "Delayed recovery action",
+              ])}
+            </div>
+            <div class="card card-dark">
+              <h2 class="gold-heading">Our Approach</h2>
+              <p>KIPROD supports financial institutions in strengthening how credit risk is managed in practice.</p>
+              ${bulletList([
+                "Early identification of emerging risk",
+                "Structured monitoring systems",
+                "Consistent decision-making frameworks",
+                "Effective borrower engagement and recovery",
+              ])}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-soft">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">KIPROD Credit Risk Model</p>
+            <h2>The KIPROD Model</h2>
+          </div>
+          <div class="grid grid-4 risk-grid">
+            ${riskModel
+              .map(
+                (item, index) => `
+                  <a class="risk-card" href="#${item.page}">
+                    <div class="number-badge">${index + 1}</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.text}</p>
+                    <div class="explore">Explore &rarr;</div>
+                  </a>
+                `,
+              )
+              .join("")}
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-white">
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="blue-heading">How Institutions Engage</h2>
+          </div>
+          <div class="grid grid-5 engagement-grid">
+            ${engagementModel
+              .map(
+                (item, index) => `
+                  <div class="engagement-card">
+                    <div class="small-badge">${index + 1}</div>
+                    <h3>${item}</h3>
+                  </div>
+                `,
+              )
+              .join("")}
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <div class="grid grid-2 cta-grid">
+            <div class="card panel-dark">
+              <h2 class="gold-heading">Start with Capability Development</h2>
+              <p>Build foundational credit risk capability across your team through our LMS-based programme.</p>
+              <div class="cta-note">Fundamentals of Credit Risk Management (Institutional Edition)</div>
+              <button class="btn btn-gold" type="button">Start Free Course</button>
+            </div>
+            <div class="card card-white">
+              <h2 class="blue-heading">Move to System Strengthening</h2>
+              ${bulletList([
+                "Credit risk governance reviews",
+                "Portfolio diagnostics",
+                "Framework development",
+                "Implementation support",
+              ])}
+              <button class="btn btn-navy" type="button">Request Institutional Discussion</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  `;
+}
+
+function renderPage() {
+  const page = window.location.hash.replace("#", "") || "home";
+
+  if (page === "about") renderAbout();
+  else if (page === "academy") renderAcademy();
+  else if (page === "partnerships") renderPartnerships();
+  else if (page === "institute") renderInstitute();
+  else if (page === "contact") renderContact();
+  else renderHome();
+
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+window.addEventListener("hashchange", renderPage);
+renderPage();
+
+    </script>
   </body>
 </html>
